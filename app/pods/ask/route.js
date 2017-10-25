@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import config from '../../config/environment';
 
 const {
   inject: { service },
@@ -11,8 +12,8 @@ export default Ember.Route.extend({
   questions: null,
 
   beforeModel(){
-    const socket = this.get('websockets').socketFor('ws://localhost:7000/');
-    const asocket = this.get('websockets').socketFor('ws://localhost:1111/');
+    const socket = this.get('websockets').socketFor(config.ADDRESS+'7000/');
+    const asocket = this.get('websockets').socketFor(config.ADDRESS+'1111/');
 
     socket.on('message', function (message) {
       message = JSON.parse(message.data);

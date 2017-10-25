@@ -1,0 +1,22 @@
+<div class="container main-container">
+  <div class="container vertical-center window-border">
+    <div class="col-sm-12">
+      {{#if model.state}}
+        {{#each model.questions as |question|}}
+          <div class="window-text">
+            {{radio-button
+              value=question.id
+              groupValue=vote
+              changed="vote"}} {{question.text}}
+          </div>
+        {{/each}}
+        <button type="button" {{action "answer"}}>
+          Ответить
+        </button><br />
+      {{else}}
+        <p class="window-text">Спасибо за участие!</p>
+        <p class="window-text">Больше опросов в данный момент не проводится</p>
+      {{/if}}
+    </div>
+  </div>
+</div>
